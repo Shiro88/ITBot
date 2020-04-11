@@ -13,7 +13,7 @@ namespace ITBot.Services
         public static async Task<SupportModel> GetEntityValue(string title)
         {
        
-                var query = $"{Constants.ZendeskGuideAPIUrl}?query={title}";
+                var query = $"{Constants.ZendeskGuideAPIUrl}?query={title}&appid={Constants.ZendeskGuideAPIKey}";
 
                 using (var client = new HttpClient())
                 {
