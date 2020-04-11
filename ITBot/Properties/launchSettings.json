@@ -1,0 +1,34 @@
+{
+    "name": "ITBot",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "development",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        },
+
+        {
+            "type": "endpoint",
+            "name": "production",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        },
+        {
+            "type": "luis",
+            "name": "ITBot",
+            "appId": "04902a8c-800e-43fa-9329-c3213e745095",
+            "version": "0.1",
+            "authoringKey": "bd8e49798c8744aca06eaba6f85c7835",
+            "subscriptionKey": "bd8e49798c8744aca06eaba6f85c7835",
+            "region": "westus",
+            "id": "158"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}
