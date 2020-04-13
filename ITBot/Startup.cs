@@ -79,6 +79,11 @@ namespace ITBot
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            if (env is null)
+            {
+                throw new ArgumentNullException(nameof(env));
+            }
+
             _loggerFactory = loggerFactory;
 
             app.UseDefaultFiles()

@@ -11,6 +11,7 @@ C:\Users\edwarc\source\repos\ITBot\ITBot\bin\Debug\netcoreapp2.1\ITBot.runtimeco
 C:\Users\edwarc\source\repos\ITBot\ITBot\bin\Debug\netcoreapp2.1\ITBot.dll
 C:\Users\edwarc\source\repos\ITBot\ITBot\bin\Debug\netcoreapp2.1\ITBot.pdb
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.csprojAssemblyReference.cache
+C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.csproj.CoreCompileInputs.cache
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.RazorAssemblyInfo.cache
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.RazorAssemblyInfo.cs
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.AssemblyInfoInputs.cache
@@ -19,4 +20,3 @@ C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.RazorTarg
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.dll
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.pdb
 C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.genruntimeconfig.cache
-C:\Users\edwarc\source\repos\ITBot\ITBot\obj\Debug\netcoreapp2.1\ITBot.csproj.CoreCompileInputs.cache

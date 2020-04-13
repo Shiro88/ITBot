@@ -27,7 +27,7 @@ namespace ITBot.Bots
         }
 
 #pragma warning disable CS0114 // Member hides inherited member; missing override keyword
-        public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default)
 #pragma warning restore CS0114 // Member hides inherited member; missing override keyword
         {
             if (turnContext.Activity.Type == ActivityTypes.Message)
@@ -43,7 +43,7 @@ namespace ITBot.Bots
                     {
                         var ro = await SupportService.GetEntityValue(article);
                         //var weather = $"{ro..First().main} ({ro.main.temp.ToString("N2")} °C)";
-                        var title = $"{ro.results.html_url}";
+                        var title = $"{ro.Results.First().HtmlUrl}";
                         var typing = Activity.CreateTypingActivity();
                         var delay = new Activity { Type = "delay", Value = 5000 };
 
@@ -82,7 +82,7 @@ namespace ITBot.Bots
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
                     await turnContext.SendActivityAsync(
-                        $"Welcome to WeatherBotv4 {member.Name}!",
+                        $"Hi i am ITBot how can i help you? {member.Name}!",
                         cancellationToken: cancellationToken);
                 }
             }

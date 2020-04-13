@@ -1,64 +1,114 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ITBot.Models
+﻿namespace ITBot.Models
 {
-    public class SupportModel
+    using System;
+    using System.Collections.Generic;
+
+    using System.Globalization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
+    public partial class SupportModel
     {
+        [JsonProperty("count")]
+        public long Count { get; set; }
 
-        public  Results results { get; set; }
+        [JsonProperty("next_page")]
+        public object NextPage { get; set; }
 
-    
-     
+        [JsonProperty("page")]
+        public long Page { get; set; }
 
-            public int count { get; set; }
-            public string next_page { get; set; }
+        [JsonProperty("page_count")]
+        public long PageCount { get; set; }
 
-            public string page { get; set; }
-            public int page_count { get; set; }
-            public int per_page { get; set; }
+        [JsonProperty("per_page")]
+        public long PerPage { get; set; }
 
-            public int previous_page { get; set; }
-        
+        [JsonProperty("previous_page")]
+        public object PreviousPage { get; set; }
 
-        public class Results
-        {
-            public int id { get; set; }
-            public string url { get; set; }
+        [JsonProperty("results")]
+        public Result[] Results { get; set; }
+    }
 
-            public string html_url { get; set; }
-            public int author_id { get; set; }
-            public Boolean comments_disabled { get; set; }
-            public Boolean draft { get; set; }
-            public Boolean promoted { get; set; }
-            public int position { get; set; }
-            public int vote_sum { get; set; }
+    public partial class Result
+    {
+        [JsonProperty("id")]
+        public long Id { get; set; }
 
-            public int vote_count { get; set; }
+        [JsonProperty("url")]
+        public Uri Url { get; set; }
 
-            public int section_id { get; set; }
+        [JsonProperty("html_url")]
+        public Uri HtmlUrl { get; set; }
 
-            public string created_at { get; set; }
+        [JsonProperty("author_id")]
+        public long AuthorId { get; set; }
 
+        [JsonProperty("comments_disabled")]
+        public bool CommentsDisabled { get; set; }
 
-            public string updated_at { get; set; }
-            public string name { get; set; }
-            public string title { get; set; }
-            public string source_locale { get; set; }
-            public string locale { get; set; }
+        [JsonProperty("draft")]
+        public bool Draft { get; set; }
 
-            public Boolean outdated { get; set; }
-            public string[] outdated_locales { get; set; }
-            public string edited_at { get; set; }
-            public string user_segment_id { get; set; }
-            public int permission_group_id { get; set; }
+        [JsonProperty("promoted")]
+        public bool Promoted { get; set; }
 
-            public string[] label_names {get; set;}
+        [JsonProperty("position")]
+        public long Position { get; set; }
 
-            public string body { get; set; }
-            public string snippet { get; set; }
-            public string result_type { get; set; }
-        }
-}
+        [JsonProperty("vote_sum")]
+        public long VoteSum { get; set; }
+
+        [JsonProperty("vote_count")]
+        public long VoteCount { get; set; }
+
+        [JsonProperty("section_id")]
+        public long SectionId { get; set; }
+
+        [JsonProperty("created_at")]
+        public DateTimeOffset CreatedAt { get; set; }
+
+        [JsonProperty("updated_at")]
+        public DateTimeOffset UpdatedAt { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("source_locale")]
+        public string SourceLocale { get; set; }
+
+        [JsonProperty("locale")]
+        public string Locale { get; set; }
+
+        [JsonProperty("outdated")]
+        public bool Outdated { get; set; }
+
+        [JsonProperty("outdated_locales")]
+        public object[] OutdatedLocales { get; set; }
+
+        [JsonProperty("edited_at")]
+        public DateTimeOffset EditedAt { get; set; }
+
+        [JsonProperty("user_segment_id")]
+        public object UserSegmentId { get; set; }
+
+        [JsonProperty("permission_group_id")]
+        public long PermissionGroupId { get; set; }
+
+        [JsonProperty("label_names")]
+        public string[] LabelNames { get; set; }
+
+        [JsonProperty("body")]
+        public string Body { get; set; }
+
+        [JsonProperty("snippet")]
+        public string Snippet { get; set; }
+
+        [JsonProperty("result_type")]
+        public string ResultType { get; set; }
+    }
 }
