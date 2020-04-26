@@ -34,30 +34,43 @@ namespace ITBot.Bots
             {
                 var recognizer = await _services.LuisServices[LuisKey].RecognizeAsync(turnContext, cancellationToken);
                 var topIntent = recognizer?.GetTopScoringIntent();
-
+                string pregunta = recognizer.Text;
                 if (topIntent != null && topIntent.HasValue && topIntent.Value.intent != "None")
-                {
-                    var article = LuisParser.GetEntityValue(recognizer);
-
-                    if (article.ToString() != string.Empty)
+                {   
+                    var entidades = LuisParser.GetEntityValue(recognizer);
+                    switch (topIntent.Value.intent)
                     {
-                        var ro = await SupportService.GetEntityValue(article);
-                        //var weather = $"{ro..First().main} ({ro.main.temp.ToString("N2")} °C)";
-                        var title = $"{ro.Results.First().HtmlUrl}";
-                        var typing = Activity.CreateTypingActivity();
-                        var delay = new Activity { Type = "delay", Value = 5000 };
+                        case "Configurar_Aplicacion":
+                            var ad = entidades.Split(',');
+                            var aplicacion = ad[0];
+                            var dispositivo = ad[1];
 
-                        var activities = new IActivity[] {
-                            typing,
-                            delay,
-                            MessageFactory.Text($"Maybe this {title} could help you"),
-                            MessageFactory.Text("Thanks for using our service!")
-                        };
+                            if (entidades.ToString() != string.Empty)
+                            {
+                                var ro = await SupportService.GetEntityValue(entidades);
+                                //var weather = $"{ro..First().main} ({ro.main.temp.ToString("N2")} °C)";
+                                var title = $"{ro.Results.First().HtmlUrl}";
+                                var typing = Activity.CreateTypingActivity();
+                                var delay = new Activity { Type = "delay", Value = 5000 };
 
-                        await turnContext.SendActivitiesAsync(activities);
+                                var activities = new IActivity[] {
+                                    typing,
+                                    delay,
+                                    MessageFactory.Text($"Maybe this {title} could help you"),
+                                    MessageFactory.Text("Thanks for using our service!")
+                                };
+
+                                await turnContext.SendActivitiesAsync(activities);
+                            }
+                            else
+                                await turnContext.SendActivityAsync($"==>Can't understand you, sorry!");
+                            break;
+                                                                            
+                        default:
+                            await turnContext.SendActivityAsync($"There is not information about your question:{pregunta} sorry!");
+                            break;
                     }
-                    else
-                        await turnContext.SendActivityAsync($"==>Can't understand you, sorry!");
+                    
                 }
                 else
                 {

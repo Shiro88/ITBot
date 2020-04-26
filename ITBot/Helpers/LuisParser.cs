@@ -11,30 +11,53 @@ namespace ITBot.Helpers
 
         public static string GetEntityValue(RecognizerResult result)
         {
-            foreach (var entity in result.Entities)
+            string resultado = string.Empty;
+
+            if (result.Intents.First().Key == "Configurar_Aplicacion")
             {
-                JArray jsonArray = JArray.Parse(entity.Value.ToString());
-                var jsonObjects = jsonArray.OfType<JObject>().ToList();
+                var disp = Constants.Ninguno;
+                var app = Constants.Ninguno;
+                if (result.Entities.ContainsKey(Constants.Aplicacion)) app = result.Entities[Constants.Aplicacion].First().ToString();
 
-                dynamic password = JObject.Parse(jsonArray[0].ToString())[Constants.PasswordLabel];
-               //var password = JObject.Parse(entity.Value.ToString())[Constants.PasswordLabel];
-                //var password = JObject.Parse(entity.Value.ToString())[Constants.PasswordLabel];
+                if (result.Entities.ContainsKey(Constants.Dispositivo)) disp = result.Entities[Constants.Dispositivo].First().First().ToString();
 
-                dynamic passwordPattern = JObject.Parse(jsonArray[0].ToString())[Constants.PasswordPatternLabel];
+                resultado = $"{disp},{app}";
 
-                if (password != null || passwordPattern != null)
+                /*
+
+                foreach (var entity in result.Entities)
                 {
-                    dynamic value = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+                    JArray jsonArray = JArray.Parse(entity.Value.ToString());
+                    var jsonObjects = jsonArray.OfType<JObject>().ToList();
 
-                    if (password != null)
-                        return value.Location[0].text;
+                    dynamic aplicacion = JObject.Parse(jsonArray[0].ToString())[Constants.Aplicacion];
+                    //var password = JObject.Parse(entity.Value.ToString())[Constants.PasswordLabel];
+                    //var password = JObject.Parse(entity.Value.ToString())[Constants.PasswordLabel];
 
-                    if (passwordPattern != null)
-                        return value.Location_PatternAny[0].text;
-                }
+                    dynamic dispositivo = JObject.Parse(jsonArray[0].ToString())[Constants.Dispositivo];
+                    
+                    if (aplicacion != null || dispositivo != null)
+                    {
+                        
+                        dynamic value = JsonConvert.DeserializeObject<dynamic>(entity.Value.ToString());
+
+                        if (aplicacion != null)
+                            resultado = aplicacion;
+                        else resultado = Constants.Ninguno;
+
+                        if (dispositivo != null)
+                            //resultado += "_" + dispositivo;
+                            resultado += $",{dispositivo}";
+                        else resultado = Constants.Ninguno;
+                    }
+                    return resultado; 
+                } */
+             
+
             }
 
-            return string.Empty;
+            return resultado;
+    
         }
     }
 }

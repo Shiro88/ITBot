@@ -16,7 +16,7 @@ namespace ITBot.Services
         {
 
 
-            var query = $"{Constants.ZendeskGuideAPIUrl}?query{title}";
+            var query = $"{Constants.ZendeskGuideAPIUrl}?query={title}";
 
             using (var client = new HttpClient())
             {
