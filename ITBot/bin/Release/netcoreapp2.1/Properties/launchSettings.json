@@ -1,23 +1,11 @@
 {
-    "name": "ITBot",
+    "name": "HelpZenBot",
     "services": [
-        {
-            "type": "endpoint",
-            "name": "development",
-            "endpoint": "http://localhost:3978/api/messages",
-            "appId": "",
-            "appPassword": "",
-            "id": "1"
-        },
-
-        {
-            "type": "endpoint",
-            "name": "production",
-            "endpoint": "http://localhost:3978/api/messages",
-            "appId": "",
-            "appPassword": "",
-            "id": "1"
-        },
+      {
+        "MicrosoftAppId": "50da24ca-fdf2-4af2-abd0-376adf062514",
+        "MicrosoftAppPassword": "$]N]nQcLj>j_Byx(Hwt?k%|1pD5G4",
+        "ScmType": "None"
+      },
         {
             "type": "luis",
             "name": "ITBot",
